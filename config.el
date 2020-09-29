@@ -54,6 +54,50 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+
+(custom-set-faces!
+  '(doom-modeline-buffer-modified :foreground "orange"))
+
+(defun doom-modeline-conditional-buffer-encoding ()
+  "We expect the encoding to be LF UTF-8, so only show the modeline when this \
+is not the case"
+  (setq-local doom-modeline-buffer-encoding
+              (unless (or (eq buffer-file-coding-system 'utf-8-unix)
+                          (eq buffer-file-coding-system 'utf-8)))))
+
+(add-hook 'after-change-major-mode-hook
+          #'doom-modeline-conditional-buffer-encoding)
+
+(when (featurep 'ns)
+  (defun ns-raise-emacs ()
+    "Raise Emacs."
+    (ns-do-applescript "tell application \"Emacs\" to activate"))
+
+  (defun ns-raise-emacs-with-frame (frame)
+    "Raise Emacs and select the provided frame."
+    (with-selected-frame frame
+      (when (display-graphic-p)
+        (ns-raise-emacs))))
+
+  (add-hook 'after-make-frame-functions 'ns-raise-emacs-with-frame)
+
+  (when (display-graphic-p)
+    (ns-raise-emacs)))
+
+
+(keychain-refresh-environment)
+
+;; Useful functions
+
+(defun smart-split ()
+  "Split the window into 100-column sub-windows."
+  (interactive)
+  (cl-labels ((smart-split-helper (w)
+                (if (> (window-width w) 180)
+                  (let ((w2 (split-window w 100 t)))
+                    (smart-split-helper w2)))))
+    (smart-split-helper nil)))
+
 (defun move-file (new-location)
   "Write this file to NEW-LOCATION, and delete the old one."
   (interactive (list (expand-file-name
@@ -74,41 +118,3 @@
                (file-exists-p new-location)
                (not (string-equal old-location new-location)))
       (delete-file old-location))))
-
-(custom-set-faces!
-  '(doom-modeline-buffer-modified :foreground "orange"))
-
-(defun doom-modeline-conditional-buffer-encoding ()
-  "We expect the encoding to be LF UTF-8, so only show the modeline when this is not the case"
-  (setq-local doom-modeline-buffer-encoding
-              (unless (or (eq buffer-file-coding-system 'utf-8-unix)
-                          (eq buffer-file-coding-system 'utf-8)))))
-
-(add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
-
-(when (featurep 'ns)
-  (defun ns-raise-emacs ()
-    "Raise Emacs."
-    (ns-do-applescript "tell application \"Emacs\" to activate"))
-
-  (defun ns-raise-emacs-with-frame (frame)
-    "Raise Emacs and select the provided frame."
-    (with-selected-frame frame
-      (when (display-graphic-p)
-        (ns-raise-emacs))))
-
-  (add-hook 'after-make-frame-functions 'ns-raise-emacs-with-frame)
-
-  (when (display-graphic-p)
-    (ns-raise-emacs)))
-
-(defun smart-split ()
-  "Split the window into 100-column sub-windows."
-  (interactive)
-  (cl-labels ((smart-split-helper (w)
-                (if (> (window-width w) 180)
-                  (let ((w2 (split-window w 100 t)))
-                    (smart-split-helper w2)))))
-    (smart-split-helper nil)))
-
-(keychain-refresh-environment)
