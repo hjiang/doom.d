@@ -79,10 +79,7 @@ is not the case"
       (when (display-graphic-p)
         (ns-raise-emacs))))
 
-  (add-hook 'after-make-frame-functions 'ns-raise-emacs-with-frame)
-
-  (when (display-graphic-p)
-    (ns-raise-emacs)))
+  (add-hook 'after-make-frame-functions 'ns-raise-emacs-with-frame))
 
 
 (keychain-refresh-environment)
