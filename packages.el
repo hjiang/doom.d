@@ -58,5 +58,7 @@
 (package! magit-delta)
 (package! nginx-mode)
 (package! nvm)
+(package! ox-pandoc)
+(package! ox-twbs)
 (package! tide)
 (package! typescript-mode)

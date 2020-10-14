@@ -84,6 +84,45 @@ is not the case"
 
 (keychain-refresh-environment)
 
+(setq inhibit-compacting-font-caches t)
+
+;; Org mode
+
+(defun orgfile (name)
+  (concat "~/org/" name))
+
+(defun gtdfile (name)
+  (orgfile (concat "gtd/" name)))
+
+(defconst gtd-inbox (gtdfile "inbox.org"))
+(defconst gtd-mobile-inbox (gtdfile "mobile-inbox.org"))
+(defconst gtd-projects (gtdfile "projects.org"))
+(defconst gtd-tickler (gtdfile "tickler.org"))
+(defconst gtd-someday (gtdfile "someday.org"))
+
+(setq org-agenda-files (list gtd-inbox
+                             gtd-mobile-inbox
+                             gtd-projects
+                             gtd-tickler))
+
+(setq org-capture-templates `(("t" "Todo [inbox]" entry
+                               (file+headline ,gtd-inbox "Tasks")
+                               "* TODO %i%?")
+                              ("T" "Tickler" entry
+                               (file+headline ,gtd-tickler "Tickler")
+                               "* %i%? \n %U")))
+
+(setq org-refile-targets `((,gtd-projects :maxlevel . 3)
+                           (,gtd-someday :level . 1)
+                           (,gtd-tickler :maxlevel . 2)))
+
+(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)"
+                                    "CANCELLED(c)")))
+
+
+(setq org-html-doctype "html5")
+(setq org-html-html5-fancy t)
+
 ;; Useful functions
 
 (defun smart-split ()
