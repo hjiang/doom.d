@@ -100,28 +100,33 @@ is not the case"
 (defconst gtd-tickler (gtdfile "tickler.org"))
 (defconst gtd-someday (gtdfile "someday.org"))
 
-(setq org-agenda-files (list gtd-inbox
-                             gtd-mobile-inbox
-                             gtd-projects
-                             gtd-tickler))
-
-(setq org-capture-templates `(("t" "Todo [inbox]" entry
-                               (file+headline ,gtd-inbox "Tasks")
-                               "* TODO %i%?")
-                              ("T" "Tickler" entry
-                               (file+headline ,gtd-tickler "Tickler")
-                               "* %i%? \n %U")))
-
-(setq org-refile-targets `((,gtd-projects :maxlevel . 3)
-                           (,gtd-someday :level . 1)
-                           (,gtd-tickler :maxlevel . 2)))
-
-(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)"
-                                    "CANCELLED(c)")))
-
-
-(setq org-html-doctype "html5")
-(setq org-html-html5-fancy t)
+(use-package! org
+  :config
+  (setq org-agenda-files (list gtd-inbox
+                               gtd-mobile-inbox
+                               gtd-projects
+                               gtd-tickler))
+  (setq org-capture-templates `(("t" "Todo [inbox]" entry
+                                 (file+headline ,gtd-inbox "Tasks")
+                                 "* TODO %i%?")
+                                ("T" "Tickler" entry
+                                 (file+headline ,gtd-tickler "Tickler")
+                                 "* %i%? \n %U")))
+  (setq org-refile-targets `((,gtd-projects :maxlevel . 3)
+                             (,gtd-someday :level . 1)
+                             (,gtd-tickler :maxlevel . 2)))
+  (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)"
+                                      "CANCELLED(c)")))
+  (setq org-html-doctype "html5")
+  (setq org-html-html5-fancy t)
+  (defun org-archive-finished-tasks ()
+    "Archive all tasks in any finished state."
+    (interactive)
+    (org-map-entries
+     (lambda ()
+       (org-archive-subtree)
+       (setq org-map-continue-from (org-element-property :begin (org-element-at-point))))
+     "/DONE|CANCELLED" 'agenda)))
 
 ;; Useful functions
 
