@@ -126,7 +126,18 @@ is not the case"
      (lambda ()
        (org-archive-subtree)
        (setq org-map-continue-from (org-element-property :begin (org-element-at-point))))
-     "/DONE|CANCELLED" 'agenda)))
+     "/DONE|CANCELLED" 'agenda))
+  (setq org-ditaa-jar-path "/usr/local/Cellar/ditaa/0.11.0_1/libexec/ditaa-0.11.0-standalone.jar"))
+
+(setq-default TeX-master nil)
+
+(use-package! auctex-latexmk
+  :config
+  (auctex-latexmk-setup))
+
+(use-package! js2-mode
+  :config
+  (setq js2-basic-offset 2))
 
 ;; Useful functions
 
@@ -134,9 +145,9 @@ is not the case"
   "Split the window into 100-column sub-windows."
   (interactive)
   (cl-labels ((smart-split-helper (w)
-                (if (> (window-width w) 180)
-                  (let ((w2 (split-window w 100 t)))
-                    (smart-split-helper w2)))))
+                                  (if (> (window-width w) 180)
+                                      (let ((w2 (split-window w 100 t)))
+                                        (smart-split-helper w2)))))
     (smart-split-helper nil)))
 
 (defun move-file (new-location)

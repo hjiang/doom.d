@@ -49,7 +49,11 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! auctex)
+(package! auctex-latexmk)
 (package! caddyfile-mode)
+(package! csharp-mode)
+(package! company-auctex)
 (package! company-nginx)
 (package! docker-compose-mode)
 (package! dockerfile-mode)
