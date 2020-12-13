@@ -139,6 +139,8 @@ is not the case"
   :config
   (setq js2-basic-offset 2))
 
+(global-wakatime-mode)
+
 ;; Useful functions
 
 (defun smart-split ()
