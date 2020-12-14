@@ -92,6 +92,11 @@ is not the case"
 
 (setq inhibit-compacting-font-caches t)
 
+;; Programming
+
+(use-package! paredit
+  :hook (emacs-lisp-mode . paredit-mode))
+
 ;; Org mode
 
 (defun orgfile (name)

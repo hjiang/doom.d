@@ -59,7 +59,6 @@
 (package! docker-compose-mode)
 (package! dockerfile-mode)
 (package! fish-mode)
-(package! hy-mode)
 (package! keychain-environment)
 (package! magit-delta)
 (package! nginx-mode)
