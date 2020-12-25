@@ -29,6 +29,10 @@
   (setq doom-font
         (font-spec :family "Fira Code" :size 14 :weight 'medium))))
 
+(dolist (charset '(kana han cjk-misc hangul kanbun bopomofo))
+  (set-fontset-font (frame-parameter nil 'font) charset
+                    (font-spec :family "Yuanti SC" :size 14) nil 'prepend))
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
