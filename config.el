@@ -24,14 +24,14 @@
 (cond
  ((find-font (font-spec :family "FuraCode Nerd Font"))
   (setq doom-font
-        (font-spec :family "FuraCode Nerd Font" :size 15 :weight 'light)))
+        (font-spec :family "FuraCode Nerd Font" :size 14 :weight 'light)))
  ((find-font (font-spec :family "Fira Code"))
   (setq doom-font
-        (font-spec :family "Fira Code" :size 15 :weight 'light))))
+        (font-spec :family "Fira Code" :size 14 :weight 'light))))
 
 (dolist (charset '(kana han cjk-misc hangul kanbun bopomofo))
   (set-fontset-font (frame-parameter nil 'font) charset
-                    (font-spec :family "Yuanti SC" :size 15 :weight 'light)
+                    (font-spec :family "Yuanti SC" :size 14 :weight 'light)
                     nil
                     'prepend))
 
