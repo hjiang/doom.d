@@ -21,24 +21,23 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(when (display-graphic-p)
-  (cond
-   ((find-font (font-spec :family "FuraCode Nerd Font"))
-    (setq doom-font
-          (font-spec :family "FuraCode Nerd Font" :size 14 :weight 'light)))
-   ((find-font (font-spec :family "FiraCode Nerd Font"))
-    (setq doom-font
-          (font-spec :family "FiraCode Nerd Font" :size 14 :weight 'light)))
-   ((find-font (font-spec :family "Fira Code"))
-    (setq doom-font
-          (font-spec :family "Fira Code" :size 14 :weight 'light)))))
+(defun maybe-set-doom-font (fspec)
+  (when (find-font fspec)
+    (setq doom-font fspec)))
 
-(add-hook! 'after-setting-font-hook
-  (dolist (charset '(kana han cjk-misc hangul kanbun bopomofo))
-    (set-fontset-font (frame-parameter nil 'font) charset
-                      (font-spec :family "Yuanti SC" :size 14 :weight 'light)
-                      nil
-                      'prepend)))
+(require 'cl-extra)
+
+(when (display-graphic-p)
+  (cl-some #'maybe-set-doom-font
+           (list (font-spec :family "FuraCode Nerd Font" :size 14)
+                 (font-spec :family "FiraCode Nerd Font" :size 14)
+                 (font-spec :family "Fira Code" :size 14)))
+  (add-hook! 'after-setting-font-hook
+    (dolist (charset '(kana han cjk-misc hangul kanbun bopomofo))
+      (set-fontset-font (frame-parameter nil 'font) charset
+                        (font-spec :family "Yuanti SC" :size 14 :weight 'light)
+                        nil
+                        'prepend))))
 
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
