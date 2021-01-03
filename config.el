@@ -21,13 +21,17 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(cond
- ((find-font (font-spec :family "FuraCode Nerd Font"))
-  (setq doom-font
-        (font-spec :family "FuraCode Nerd Font" :size 14 :weight 'light)))
- ((find-font (font-spec :family "Fira Code"))
-  (setq doom-font
-        (font-spec :family "Fira Code" :size 14 :weight 'light))))
+(when (display-graphic-p)
+  (cond
+   ((find-font (font-spec :family "FuraCode Nerd Font"))
+    (setq doom-font
+          (font-spec :family "FuraCode Nerd Font" :size 14 :weight 'light)))
+   ((find-font (font-spec :family "FiraCode Nerd Font"))
+    (setq doom-font
+          (font-spec :family "FiraCode Nerd Font" :size 14 :weight 'light)))
+   ((find-font (font-spec :family "Fira Code"))
+    (setq doom-font
+          (font-spec :family "Fira Code" :size 14 :weight 'light)))))
 
 (add-hook! 'after-setting-font-hook
   (dolist (charset '(kana han cjk-misc hangul kanbun bopomofo))
