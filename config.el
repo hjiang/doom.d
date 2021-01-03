@@ -29,11 +29,13 @@
   (setq doom-font
         (font-spec :family "Fira Code" :size 14 :weight 'light))))
 
-(dolist (charset '(kana han cjk-misc hangul kanbun bopomofo))
-  (set-fontset-font (frame-parameter nil 'font) charset
-                    (font-spec :family "Yuanti SC" :size 14 :weight 'light)
-                    nil
-                    'prepend))
+(add-hook! 'after-setting-font-hook
+  (dolist (charset '(kana han cjk-misc hangul kanbun bopomofo))
+    (set-fontset-font (frame-parameter nil 'font) charset
+                      (font-spec :family "Yuanti SC" :size 14 :weight 'light)
+                      nil
+                      'prepend)))
+
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
