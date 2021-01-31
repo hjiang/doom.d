@@ -29,15 +29,19 @@
 
 (when (display-graphic-p)
   (cl-some #'maybe-set-doom-font
-           (list (font-spec :family "FuraCode Nerd Font" :size 14)
-                 (font-spec :family "FiraCode Nerd Font" :size 14)
-                 (font-spec :family "Fira Code" :size 14)))
+           (list
+            (font-spec :family "JetBrains Mono" :size 13)
+            (font-spec :family "FuraCode Nerd Font" :size 14)
+            (font-spec :family "FiraCode Nerd Font" :size 14)
+            (font-spec :family "Fira Code" :size 14)))
   (add-hook! 'after-setting-font-hook
     (dolist (charset '(kana han cjk-misc hangul kanbun bopomofo))
       (set-fontset-font (frame-parameter nil 'font) charset
                         (font-spec :family "Yuanti SC" :size 14 :weight 'light)
                         nil
                         'prepend))))
+
+(setq-default line-spacing 0.2)
 
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -70,7 +74,6 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
 
 (custom-set-faces!
   '(doom-modeline-buffer-modified :foreground "orange"))
