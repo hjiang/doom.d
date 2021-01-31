@@ -111,6 +111,10 @@ is not the case"
 (use-package! paredit
   :hook (emacs-lisp-mode . paredit-mode))
 
+(use-package! company
+  :config
+  (add-to-list 'company-backends #'company-tabnine))
+
 ;; Org mode
 
 (defun orgfile (name)
