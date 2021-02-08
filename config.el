@@ -71,7 +71,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-
 (custom-set-faces!
   '(doom-modeline-buffer-modified :foreground "orange"))
 
@@ -107,6 +106,10 @@ is not the case"
 
 (use-package! paredit
   :hook (emacs-lisp-mode . paredit-mode))
+
+(use-package! company
+  :config
+  (add-to-list 'company-backends #'company-tabnine))
 
 ;; Org mode
 
