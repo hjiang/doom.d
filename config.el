@@ -30,7 +30,7 @@
 (when (display-graphic-p)
   (cl-some #'maybe-set-doom-font
            (list
-            (font-spec :family "JetBrainsMono Nerd Font" :size 13)
+            (font-spec :family "JetBrainsMono Nerd Font Mono" :size 13)
             (font-spec :family "JetBrains Mono" :size 13)
             (font-spec :family "FuraCode Nerd Font" :size 14)
             (font-spec :family "FiraCode Nerd Font" :size 14)
