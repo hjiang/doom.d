@@ -169,6 +169,10 @@ is not the case"
   :config
   (setq js2-basic-offset 2))
 
+(use-package! cc-mode
+  :config
+  (c-set-offset 'innamespace 0))
+
 (global-wakatime-mode)
 
 ;; Useful functions
