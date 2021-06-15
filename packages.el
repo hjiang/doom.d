@@ -62,6 +62,7 @@
 (package! fish-mode)
 (package! keychain-environment)
 (package! magit-delta)
+(package! magit-section)
 (package! nginx-mode)
 (package! nvm)
 (package! ox-pandoc)
