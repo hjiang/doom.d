@@ -49,6 +49,9 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+;; This has to be defined before (package! nand2tetris)
+(setq nand2tetris-core-base-dir "~/Code/nand2tetris")
+
 (package! auctex)
 (package! auctex-latexmk)
 (package! caddyfile-mode)
@@ -62,6 +65,8 @@
 (package! fish-mode)
 (package! keychain-environment)
 (package! magit-delta)
+(package! nand2tetris)
+(package! nand2tetris-assembler)
 (package! nginx-mode)
 (package! nvm)
 (package! ox-pandoc)
