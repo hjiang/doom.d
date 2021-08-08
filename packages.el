@@ -67,6 +67,7 @@
 (package! magit-delta)
 (package! nand2tetris)
 (package! nand2tetris-assembler)
+(package! magit-section)
 (package! nginx-mode)
 (package! nvm)
 (package! ox-pandoc)
