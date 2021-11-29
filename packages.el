@@ -52,6 +52,8 @@
 ;; This has to be defined before (package! nand2tetris)
 (setq nand2tetris-core-base-dir "~/Code/nand2tetris")
 
+(unpin! org-roam)
+
 (package! auctex)
 (package! auctex-latexmk)
 (package! caddyfile-mode)
@@ -70,6 +72,8 @@
 (package! magit-section)
 (package! nginx-mode)
 (package! nvm)
+(package! org-roam)
+(package! org-roam-ui)
 (package! ox-pandoc)
 (package! ox-twbs)
 (package! tide)
