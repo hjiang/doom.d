@@ -119,8 +119,9 @@ is not the case"
   (add-to-list 'company-backends #'company-tabnine))
 
 (use-package! org-roam
-  :config
+  :init
   (setq org-roam-v2-ack t)
+  :config
   (setq org-roam-directory (file-truename "~/org/roam"))
   (org-roam-db-autosync-mode))
 
