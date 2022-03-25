@@ -197,6 +197,8 @@ is not the case"
   :config
   (c-set-offset 'innamespace 0))
 
+(load! "lib/bazel")
+
 ;; Useful functions
 
 (defun smart-split ()
