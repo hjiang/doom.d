@@ -197,8 +197,6 @@ is not the case"
   :config
   (c-set-offset 'innamespace 0))
 
-(global-wakatime-mode)
-
 ;; Useful functions
 
 (defun smart-split ()
