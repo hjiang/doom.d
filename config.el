@@ -21,20 +21,30 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(defun maybe-set-doom-font (fspec)
-  (when (find-font fspec)
-    (setq doom-font fspec)))
+(defmacro maybe-set-font (font-var font)
+  `(when (find-font ,font)
+     (setq ,font-var ,font)))
 
 (require 'cl-extra)
 
 (when (display-graphic-p)
-  (cl-some #'maybe-set-doom-font
+  (cl-some #'(lambda (f) (maybe-set-font doom-font f))
            (list
-            (font-spec :family "JetBrainsMono Nerd Font Mono" :size 13)
-            (font-spec :family "JetBrains Mono" :size 13)
+            (font-spec :family "JetBrainsMono Nerd Font" :size 14)
+            (font-spec :family "JetBrainsMono Nerd Font Mono" :size 14)
+            (font-spec :family "JetBrains Mono" :size 14)
             (font-spec :family "FuraCode Nerd Font" :size 14)
             (font-spec :family "FiraCode Nerd Font" :size 14)
             (font-spec :family "Fira Code" :size 14)))
+  (cl-some #'(lambda (f) (maybe-set-font doom-variable-pitch-font f))
+           (list
+            (font-spec :family "Fira Sans" :size 14)))
+  (cl-some #'(lambda (f) (maybe-set-font doom-serif-font f))
+           (list
+            (font-spec :family "Noto Serif" :size 14)))
+  (cl-some #'(lambda (f) (maybe-set-font doom-unicode-font f))
+           (list
+            (font-spec :family "Noto Sans CJK SC" :size 14)))
   (add-hook! 'after-setting-font-hook
     (dolist (charset '(kana han cjk-misc hangul kanbun bopomofo))
       (set-fontset-font (frame-parameter nil 'font) charset
