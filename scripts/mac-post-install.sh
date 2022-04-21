@@ -2,4 +2,4 @@
 
 set -e
 
-brew install ffind shellcheck ripgrep coreutils fd
+brew install shellcheck ripgrep coreutils fd direnv editorconfig
