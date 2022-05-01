@@ -76,6 +76,7 @@
 (package! org-roam-ui)
 (package! ox-pandoc)
 (package! ox-twbs)
+(package! paredit)
 (package! tide)
 (package! typescript-mode)
 (package! wakatime-mode)
