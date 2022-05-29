@@ -247,3 +247,9 @@ is not the case"
                (file-exists-p new-location)
                (not (string-equal old-location new-location)))
       (delete-file old-location))))
+
+(defun indent-buffer ()
+  (interactive)
+  (save-excursion
+    (indent-region (point-min) (point-max) nil)))
+(global-set-key [f12] 'indent-buffer)
