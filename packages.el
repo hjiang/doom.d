@@ -65,6 +65,7 @@
 (package! docker-compose-mode)
 (package! dockerfile-mode)
 (package! fish-mode)
+(package! google-c-style)
 (package! keychain-environment)
 (package! magit-delta)
 (package! nand2tetris)
