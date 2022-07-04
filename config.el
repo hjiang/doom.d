@@ -202,10 +202,6 @@ is not the case"
 
 (setq-default TeX-master nil)
 
-(use-package! auctex-latexmk
-  :config
-  (auctex-latexmk-setup))
-
 (use-package! js2-mode
   :config
   (setq js2-basic-offset 2))

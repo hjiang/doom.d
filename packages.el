@@ -54,8 +54,6 @@
 
 (unpin! org-roam)
 
-(package! auctex)
-(package! auctex-latexmk)
 (package! caddyfile-mode)
 (package! chess)
 (package! csharp-mode)
