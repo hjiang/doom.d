@@ -32,7 +32,7 @@
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
        (emoji +unicode)  ; 🙂
-       fill-column       ; a `fill-column' indicator
+       ;; fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
        ;;indent-guides     ; highlighted indent columns
@@ -176,6 +176,7 @@
        ;;(wanderlust +gmail)
 
        :app
+       everywhere
        ;;calendar
        ;;irc               ; how neckbeards socialize
        ;; (rss +org)        ; emacs as an RSS reader

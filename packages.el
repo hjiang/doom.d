@@ -66,6 +66,7 @@
 (package! google-c-style)
 (package! keychain-environment)
 (package! magit-delta)
+(package! mermaid-mode)
 (package! nand2tetris)
 (package! nand2tetris-assembler)
 (package! magit-section)
