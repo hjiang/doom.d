@@ -59,7 +59,6 @@
 (package! csharp-mode)
 (package! company-auctex)
 (package! company-nginx)
-(package! company-tabnine)
 (package! docker-compose-mode)
 (package! dockerfile-mode)
 (package! fish-mode)

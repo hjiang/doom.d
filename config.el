@@ -129,10 +129,6 @@ is not the case"
   (c-mode-common . google-set-c-style)
   (c-mode-common . google-make-newline-indent))
 
-(use-package! company
-  :config
-  (add-to-list 'company-backends #'company-tabnine))
-
 (setq org-roam-directory (file-truename "~/org/roam"))
 
 (when (file-directory-p org-roam-directory)
