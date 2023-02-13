@@ -59,6 +59,8 @@
 (package! csharp-mode)
 (package! company-auctex)
 (package! company-nginx)
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 (package! docker-compose-mode)
 (package! dockerfile-mode)
 (package! fish-mode)
