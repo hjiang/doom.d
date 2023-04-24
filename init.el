@@ -114,7 +114,7 @@
        ;;agda              ; types of types of types of types...
        (cc +lsp)                ; C/C++/Obj-C madness
        ;; clojure           ; java with a lisp
-       ;;common-lisp       ; if you've seen one lisp, you've seen them all
+       common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
@@ -129,7 +129,7 @@
        ;;fsharp            ; ML stands for Microsoft's Language
        ;;fstar             ; (dependent) types and (monadic) effects and Z3
        ;;gdscript          ; the language you waited for
-       ;; (go +lsp)         ; the hipster dialect
+       (go +lsp)         ; the hipster dialect
        ;; (haskell +dante)  ; a language that's lazier than I am
        ;; hy                ; readability of scheme w/ speed of python
        ;; idris             ;
@@ -138,7 +138,7 @@
        javascript          ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;; kotlin            ; a better, slicker Java(Script)
-       latex            ; writing papers in Emacs has never been so fun
+       (latex +cdlatex +fold +latexmk +lsp)             ; writing papers in Emacs has never been so fun
        ;;lean
        ;;factor
        ;;ledger            ; an accounting system in Emacs
@@ -147,7 +147,7 @@
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       org               ; organize your plain life in plain text
+       (org +roam2 +dragndrop +pandoc +pretty +present)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
