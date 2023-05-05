@@ -188,7 +188,10 @@ is not the case"
 
 (use-package! cc-mode
   :config
-  (c-set-offset 'innamespace 0))
+  (c-set-offset 'innamespace 0)
+  :hook
+  (c++-mode . (lambda ()
+                (setq flycheck-clang-language-standard "c++17"))))
 
 (load! "lib/bazel")
 
