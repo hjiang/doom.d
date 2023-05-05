@@ -53,6 +53,7 @@
        ;;zen               ; distraction-free coding or writing
 
        :editor
+       format
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
@@ -131,7 +132,7 @@
        (gdscript +lsp)          ; the language you waited for
        (go +lsp)         ; the hipster dialect
        ;; (haskell +dante)  ; a language that's lazier than I am
-       ;; hy                ; readability of scheme w/ speed of python
+       hy                ; readability of scheme w/ speed of python
        ;; idris             ;
        json                 ; At least it ain't XML
        ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
@@ -151,7 +152,7 @@
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       (python +lsp)            ; beautiful is better than ugly
+       (python +lsp +pyright +pyenv +poetry)            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
