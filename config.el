@@ -123,11 +123,10 @@ is not the case"
 
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
-  :bind (("C-TAB" . 'copilot-accept-completion-by-word)
-         ("C-<tab>" . 'copilot-accept-completion-by-word)
-         :map copilot-completion-map
-         ("<tab>" . 'copilot-accept-completion)
-         ("TAB" . 'copilot-accept-completion)))
+  :bind (:map copilot-mode-map
+              ("C-<tab>" . 'copilot-accept-completion-by-word)
+              ("C-," . 'copilot-accept-completion-by-line)
+              ("C-." . 'copilot-accept-completion)))
 
 (use-package! paredit
   :hook (emacs-lisp-mode . paredit-mode))
@@ -186,12 +185,23 @@ is not the case"
   :config
   (setq js2-basic-offset 2))
 
-(use-package! cc-mode
-  :config
+;; (use-package! cc-mode
+;; ;;   :config
+;; ;;   (c-set-offset 'innamespace 0)
+;; ;;   :hook
+;; ;;   (c++-mode . (lambda ()
+;; ;;                 (flycheck-select-checker 'clang)
+;; ;;                 (setq flycheck-clang-language-standard "c++20")
+;; ;;                 (setq flycheck-gcc-language-standard "c++20"))))
+
+(use-package! flycheck-google-cpplint)
+
+(add-hook! 'c++-mode-hook
+  (flycheck-select-checker 'c/c++-clang)
+  (setq flycheck-clang-language-standard "c++20")
   (c-set-offset 'innamespace 0)
-  :hook
-  (c++-mode . (lambda ()
-                (setq flycheck-clang-language-standard "c++17"))))
+  (flycheck-add-next-checker 'c/c++-clang
+                           '(warning . c/c++-googlelint)))
 
 (load! "lib/bazel")
 
@@ -231,4 +241,3 @@ is not the case"
   (interactive)
   (save-excursion
     (indent-region (point-min) (point-max) nil)))
-(global-set-key [f12] 'indent-buffer)
