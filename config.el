@@ -241,3 +241,11 @@ is not the case"
   (interactive)
   (save-excursion
     (indent-region (point-min) (point-max) nil)))
+
+;; (map! :after tex
+;;       :map TeX-mode-map
+;;       "\"" nil)
+
+;; (after! smartparens-latex
+;;   (sp-local-pair '(tex-mode plain-tex-mode latex-mode LaTeX-mode)
+;;                   "``" "''" :actions :rem))
